@@ -30,9 +30,9 @@ const sendMessage = (e) => {
 
 function addMessage(author, content) {
   const message = document.createElement("li");
-  message.classList.add("message");
-  message.classList.add("message--received");
-  if (author === userName) message.classList.add("message--self");
+  message.classList.toggle("message");
+  message.classList.toggle("message--received");
+  if (author === userName) message.classList.toggle("message--self");
   message.innerHTML = `
       <h3 class="message__author">${userName === author ? "You" : author}</h3>
       <div class="message__content">
