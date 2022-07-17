@@ -23,8 +23,11 @@ const login = (e) => {
 
 const sendMessage = (e) => {
   e.preventDefault();
-  if (messageContentInput.value !== "") {
-    addMessage(userName, messageContentInput.value);
+  let messageContent = messageContentInput.value;
+
+  if (messageContent !== "") {
+    addMessage(userName, messageContent);
+    socket.emit("message", { author: userName, content: messageContent });
     messageContentInput.value = "";
   } else {
     alert("This field cannot be empty!");
